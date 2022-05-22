@@ -1,0 +1,113 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tweets</h1>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+  body {
+    background-color: #eee;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+  .card {
+    border: none;
+  }
+  .ellipsis {
+    color: #a09c9c;
+  }
+  hr {
+    color: #a09c9c;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+  .muted-color {
+    color: #a09c9c;
+    font-size: 13px;
+  }
+  .ellipsis i {
+    margin-top: 3px;
+    cursor: pointer;
+  }
+  .icons i {
+    font-size: 25px;
+  }
+  .icons .fa-heart {
+    color: red;
+  }
+  .icons .fa-smile-o {
+    color: yellow;
+    font-size: 29px;
+  }
+  .rounded-image {
+    border-radius: 50% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+  }
+  .name {
+    font-weight: 600;
+  }
+
+  .status small {
+    margin-right: 10px;
+    color: blue;
+  }
+  .form-control {
+    border-radius: 26px;
+  }
+  .fonts {
+    position: absolute;
+    right: 13px;
+    top: 8px;
+    color: #a09c9c;
+  }
+  .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #8bbafe;
+    outline: 0;
+    box-shadow: none;
+  }
+</style>
+
+<% @tweets.each do |tweet| %>
+<div class="container mt-5 mb-5">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="d-flex justify-content-between p-2 px-3">
+          <div class="d-flex flex-row align-items-center">
+            <img
+              src=<%= tweet.user.avatar %>
+              width="80"
+              height="80"
+              class="rounded-circle "
+            />
+            <div class="d-flex flex-column ml-2">
+              <span class="font-weight-bold mx-2"><%= tweet.user.email %></span>
+            </div>
+          </div>
+          <div class="d-flex flex-row mt-1 ellipsis">
+            <small class="mr-2">20 mins</small> <i class="fa fa-ellipsis-h"></i>
+          </div>
+        </div>
+        <div class="p-2  border-right  mx-5">
+          <p class="text-justify">
+            <%= tweet.body %>
+          </p>
+        </div>
+
+        <div class="m-3">
+          <%= link_to 'Show', tweet  %>
+          <%= link_to 'Edit', edit_tweet_path(tweet) %>
+          <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you
+        sure?' } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<%= link_to 'New Tweet', new_tweet_path %>

@@ -1,0 +1,28 @@
+<h1>Hello, Rails!</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Profile pic</th>
+        <th scope="col">name</th>
+        <th scope="col">email</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <% @users.each do |user| %>
+            <tr>
+              <th scope="row"><img src="<%= user.avatar %>" alt="Avatar" class="avatar"></th>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= link_to 'Edit profile', edit_user_registration_path(user), :class => 'navbar-link' %></td>
+              <td><%= link_to 'Delete profile', user_registration_path(user),method: :delete, data: {  confirm: 'Are you sure?' } ,:class => 'navbar-link' %></td>
+            </tr>
+        <% end %>
+    </tbody>
+  </table>
+
+
+
