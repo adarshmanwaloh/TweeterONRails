@@ -40,11 +40,11 @@ button:hover, a:hover {
 
 <div class="card">
   <img src="<%= current_user.avatar %>" alt="John" style="width:100%">
+  
   <p class="title"><%= current_user.email %></p>
+  <p class="title"><%= current_user.first_name %> <%= current_user.last_name %></p>
   <%= link_to "Edit Profile",edit_user_registration_path(current_user), class: "btn btn-primary my-1"   %>
   <%= link_to "Delete Profile",user_registration_path(current_user),method: :delete, data: {  confirm: 'Are you sure?' }, class: "btn btn-danger my-1"   %>
-  <p><button>From oncehub</button></p>
-  
 
 </div>
 

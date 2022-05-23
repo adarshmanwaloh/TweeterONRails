@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_21_131851) do
+ActiveRecord::Schema.define(version: 2022_05_23_091613) do
+
+  create_table "followers", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "follower_id"
+    t.index ["user_id"], name: "index_followers_on_user_id"
+  end
 
   create_table "tweets", force: :cascade do |t|
     t.string "body"
@@ -29,6 +37,9 @@ ActiveRecord::Schema.define(version: 2022_05_21_131851) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "age"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

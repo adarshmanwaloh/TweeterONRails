@@ -9,7 +9,21 @@ resource: resource %>
   <%= f.file_field :avatar, autofocus: true,class:
   "form-control" %>
 </div>
-
+<div>
+  <%= f.label :first_name %><br />
+  <%= f.text_field :first_name, autofocus: true,class:
+  "form-control" %>
+</div>
+<div>
+  <%= f.label :last_name %><br />
+  <%= f.text_field :last_name, autofocus: true,class:
+  "form-control"  %>
+</div>
+<div>
+  <%= f.label :age %><br />
+  <%= f.number_field  :age, autofocus: true,class:
+  "form-control"  %>
+</div>
 
 <div class="field my-2">
   <%= f.label :email,class: "form-label" %><br />

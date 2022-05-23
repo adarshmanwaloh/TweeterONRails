@@ -1,0 +1,12 @@
+<h1>You are Following <%= @users.all.count %> users </h1>
+<div class="row">
+  <% @users.each do |user| %>
+      <div class="card m-2" style="width: 18rem">
+        <img class="card-img-top" src=<%= user.avatar %> alt="Card image cap" />
+          <div class="card-body">
+            <p class="card-title"><%= user.email %></p>
+            <%= link_to "unFollow",unfollow_path(user) %>
+          </div>
+      </div>
+  <% end %>
+</div>

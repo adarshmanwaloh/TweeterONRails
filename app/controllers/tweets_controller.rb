@@ -1,9 +1,13 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: %i[ show edit update destroy ]
-
   # GET /tweets or /tweets.json
   def index
-    @tweets = Tweet.all
+    if current_user
+      friend_ids=current_user.followers.pluck(:follower_id)
+      @tweets=Tweet.where(user_id: friend_ids << current_user.id)
+    else 
+      redirect_to new_user_session_path, alert: "Please LogIn First !!!! "
+    end 
   end
 
   # GET /tweets/1 or /tweets/1.json
